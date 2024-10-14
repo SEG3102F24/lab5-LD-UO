@@ -11,12 +11,15 @@ export class EmployeeService {
 
   employees$: BehaviorSubject<readonly Employee[]> = new BehaviorSubject<readonly Employee[]>([]);
 
-  get $(): Observable<readonly Employee[]> {
+  // get $(): Observable<readonly Employee[]> {
+  //   return this.employees$;
+  // }
+
+  getEmployees(): Observable<Employee[]> {
     const employees = collection(this.firestore, 'employees');
-    console.log(employees)
-    return collectionData(employees, {idField: 'id'}) as Observable<Employee[]>;
+    return collectionData(employees) as Observable<Employee[]>
   }
-    
+
   addEmployee(employee: Employee) {
     const employees = collection(this.firestore, 'employees');
     delete employee.id;
