@@ -24,7 +24,5 @@ export class EmployeesComponent implements OnInit {
         return { ...e } as Employee;
       });
     });
-
-    console.log(this.employees);
   }
 }
